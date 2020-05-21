@@ -13,47 +13,48 @@ import javax.persistence.OneToMany;
 @Entity
 public class Ong implements Serializable{ 
 
-	public Set<Donate> getDonates() {
-		return donates;
-	}
-
-	public void setDonates(Set<Donate> donates) {
-		this.donates = donates;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	private static final long serialVersionUID = 1L;
-
-	public Ong() {
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-	@Column(nullable = false)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(name = "nome")
 	private String nome;
 
-	@Column(nullable = false)
+	@Column(name = "cnpj")
 	private Long cnpj;
 
-	@Column(nullable = false)
+	@Column(name = "endereco")
 	private String endereco;
 
-	@Column(nullable = false)
+	@Column(name = "telefone")
 	private Long telefone;
 
-	@Column(nullable = false)
+	@Column(name = "email")
 	private String email;
 	
 	@OneToMany(mappedBy = "ong")
 	private Set<Donate> donates;
 	
+
+	public Ong() {
+		
+		
+	}
+
+	
+	public Ong(Long id, String nome, Long cnpj, String endereco, Long telefone, String email, Set<Donate> donates) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.donates = donates;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -68,6 +69,14 @@ public class Ong implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Long getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(Long cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	public String getEndereco() {
@@ -94,12 +103,12 @@ public class Ong implements Serializable{
 		this.email = email;
 	}
 
-	public Long getCnpj() {
-		return cnpj;
+	public Set<Donate> getDonates() {
+		return donates;
 	}
 
-	public void setCnpj(Long cnpj) {
-		this.cnpj = cnpj;
+	public void setDonates(Set<Donate> donates) {
+		this.donates = donates;
 	}
 
 }

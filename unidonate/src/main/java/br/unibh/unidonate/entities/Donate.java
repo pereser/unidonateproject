@@ -8,25 +8,35 @@ public class Donate implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Donate() {
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_Doacao")
 	private int id;
 
-	@Column(nullable = false)
-	private String DonateType;
+	@Column(name = "donateType")
+	private String donateType;
+
+	@Column(name = "qtd")
+	private int qtd;
+
+	@Column(name = "descricao")
+	private String descricao;
 
 	@ManyToOne
 	private Ong ong;
+	
+	public Donate() {
+		
+	}
 
-	@Column(nullable = false)
-	private int qtd;
-
-	@Column(nullable = false)
-	private String descricao;
+	public Donate(int id, String donateType, int qtd, String descricao, Ong ong) {
+		super();
+		this.id = id;
+		this.donateType = donateType;
+		this.qtd = qtd;
+		this.descricao = descricao;
+		this.ong = ong;
+	}
 
 	public int getId() {
 		return id;
@@ -37,19 +47,11 @@ public class Donate implements Serializable {
 	}
 
 	public String getDonateType() {
-		return DonateType;
+		return donateType;
 	}
 
 	public void setDonateType(String donateType) {
-		DonateType = donateType;
-	}
-
-	public Ong getOng() {
-		return ong;
-	}
-
-	public void setOng(Ong ong) {
-		this.ong = ong;
+		this.donateType = donateType;
 	}
 
 	public int getQtd() {
@@ -68,8 +70,12 @@ public class Donate implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Ong getOng() {
+		return ong;
+	}
+
+	public void setOng(Ong ong) {
+		this.ong = ong;
 	}
 
 	
